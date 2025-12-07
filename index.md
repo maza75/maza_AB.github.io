@@ -242,80 +242,90 @@ order: 1
   <span>Caffeine: <span style="color:red">CRITICAL</span></span>
 </div>
 
-<div class="hero-panel">
-  <h1 style="margin-bottom: 0;">MAZAHARUL</h1>
-  <p style="color: #666; font-size: 0.9em; margin-top: 5px;">IDENT CODE: PHD-SCHOLAR-75</p>
-  
-  <br>
-  
-  <div class="typewriter">
-    <p>"Parsing the Universe, one error at a time."</p>
-  </div>
-
-  <p style="margin-top: 30px; line-height: 1.7;">
-    I am a <strong>Cosmological Detective</strong> at Presidency University. <br>
-    I stare at data until it confesses why the Universe is accelerating. <br>
-    (Spoiler: It's mostly Dark Energy, or my code is broken).
-  </p>
+<div class="content-box">
+    <p>
+        <strong>Greetings, Observer.</strong> 👋
+    </p>
+    <p>
+        I am a PhD Research Scholar at the <strong>Department of Mathematics, Presidency University, Kolkata</strong>. 
+        Under the guidance of <strong>Dr. Supriya Pan</strong>, I investigate the underlying fabric of the cosmos.
+    </p>
+    <p>
+        My research sits at the intersection of <strong>Theoretical Physics</strong> and <strong>Astronomical Observation</strong>. 
+        My goal? To reconstruct the expansion history of the Universe and figure out if <strong>Dark Energy</strong> is real, or if the Universe is just pranking us.
+    </p>
 </div>
 
----
-
-### 📂 CASE FILE: RESEARCH
-*Accessing classified documents on the fate of the cosmos...*
-
-<div class="box">
-  <h3>⚡ The Big Mysteries</h3>
-  <ul>
-    <li><strong>Dark Energy:</strong> The thing pushing the universe apart. I'm trying to figure out what it is before it pushes us all away.</li>
-    <li><strong>Model-Independent Recon:</strong> I use <strong>Machine Learning</strong> to analyze data without human bias. (Robots are better at math than us anyway).</li>
-    <li><strong>Testing ΛCDM:</strong> The "Standard Model" of cosmology. It's like an old car; it works, but it makes weird noises sometimes.</li>
-  </ul>
+<div class="section-header">
+    <span class="icon">📂</span>
+    <h2>Case File: Cosmology</h2>
+</div>
+<div class="content-box">
+    <p>
+        I employ both <strong>parametric</strong> (testing theories) and <strong>non-parametric</strong> (letting data speak) methodologies. 
+        I combine rigorous math with data from distant galaxies, CMB radiation, and large-scale structures to answer one question: <em>What is the ultimate fate of the Universe?</em>
+    </p>
+    
+    <div class="box" style="margin-top: 20px;">
+        <strong>Key Objectives:</strong>
+        <ul>
+            <li><strong>Dark Energy Forensics:</strong> Reconstructing the Hubble and deceleration parameters to understand late-time acceleration.</li>
+            <li><strong>Testing ΛCDM:</strong> The "Standard Model" is robust, but I look for the cracks (deviations) using datasets like SNe Ia and DESI-BAO.</li>
+            <li><strong>Model-Independent Recon:</strong> Using Machine Learning to extract cosmic signals without theoretical bias.</li>
+        </ul>
+    </div>
 </div>
 
----
+<div class="section-header">
+    <span class="icon">🛠</span>
+    <h2>The Arsenal (Methodology)</h2>
+</div>
+<div class="content-box">
+    <p>
+        To model the Universe, I rely on Bayesian inference and modern computation. 
+        I often use <strong>Gaussian Processes</strong> to find patterns in chaos and <strong>MCMC sampling</strong> to find the truth in the noise.
+    </p>
+    
+    <div style="margin-top: 15px;">
+        <span class="code-font" style="color: #888;">// MACHINE LEARNING & STATS</span>
+        <div class="tech-grid">
+            <span class="tech-tag">Gaussian Processes</span>
+            <span class="tech-tag">Gapp</span>
+            <span class="tech-tag">tinygp</span>
+            <span class="tech-tag">JAX</span>
+            <span class="tech-tag">NumPyro</span>
+            <span class="tech-tag">ANNs</span>
+        </div>
+    </div>
 
-### 💾 DATA LOGS (Publications)
-Proof that I actually do work and don't just watch Sci-Fi movies.
-
-<div class="btn-container">
-  <a href="/publications/" class="cyber-btn">Decrypt Archives</a>
+    <div style="margin-top: 15px;">
+        <span class="code-font" style="color: #888;">// COSMOLOGY PACKAGES</span>
+        <div class="tech-grid">
+            <span class="tech-tag">CLASS</span>
+            <span class="tech-tag">MontePython</span>
+            <span class="tech-tag">Cobaya</span>
+            <span class="tech-tag">Colfi</span>
+            <span class="tech-tag">emcee</span>
+        </div>
+    </div>
 </div>
 
----
-
-### 🛠 WEAPONRY (Toolkit)
-Tools I use to fight entropy and bad data.
-
-<div style="text-align: center; margin-top: 20px;">
-  <span class="toolkit-span" style="border: 1px solid #333; padding: 5px 10px; margin: 5px; display: inline-block; color: #00d2ff;">PYTHON</span>
-  <span class="toolkit-span" style="border: 1px solid #333; padding: 5px 10px; margin: 5px; display: inline-block; color: #00d2ff;">JAX</span>
-  <span class="toolkit-span" style="border: 1px solid #333; padding: 5px 10px; margin: 5px; display: inline-block; color: #00d2ff;">MCMC</span>
-  <span class="toolkit-span" style="border: 1px solid #333; padding: 5px 10px; margin: 5px; display: inline-block; color: #00d2ff;">Gaussian Processes</span>
-  <span class="toolkit-span" style="border: 1px solid #333; padding: 5px 10px; margin: 5px; display: inline-block; color: #00d2ff;">CLASS</span>
+<div class="section-header">
+    <span class="icon">🎭</span>
+    <h2>Human Simulation Mode</h2>
 </div>
-
----
-
-### 🎭 HUMAN SIMULATION MODE
-**Warning:** Serious scientist detected. Deploying countermeasures.
-
-I believe the Universe is a giant joke, and Physics is the punchline. Inspired by **Charlie Chaplin**, I try to find the rhythm in the chaos. When not calculating cosmic expansion, I am usually expanding my knowledge of cinema and cricket.
-
-<div class="btn-container">
-  <a href="/gallery/" class="cyber-btn" style="border-color: #ff9f43; color: #ff9f43;">View Life.exe</a>
-</div>
-
 <div class="warning-box">
-  <span class="warning-icon">⚠️</span>
-  <strong>SYSTEM ALERT:</strong><br>
-  "I am not saying it was Aliens... but have you seen my Dark Energy plots?"
+    <span class="warning-label">STATUS: OFFLINE</span>
+    <p>
+        <strong>Balance is key.</strong> When the code compiles (or crashes), I switch contexts.
+    </p>
+    <p>
+        I thrive on creativity, movement, and laughter. Inspired by the timeless humor of <strong>Charlie Chaplin</strong> and <strong>Mr. Bean</strong>, I believe that a little absurdity is necessary to understand a chaotic Universe.
+    </p>
+    <p>
+        <strong>Current Activities:</strong><br>
+        🏏 <strong>Sports:</strong> Keeping the kinetic energy high.<br>
+        🎬 <strong>Cinema:</strong> From thought-provoking dramas to light-hearted comedies.<br>
+        🎨 <strong>Digital Content:</strong> Blending storytelling with imagination.
+    </p>
 </div>
-
-<br><br>
-
-<a href="mailto:mazaharul.rs@presiuniv.ac.in" class="signal-beacon" title="Send Distress Signal">
-  <svg class="icon-svg" viewBox="0 0 24 24">
-    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-  </svg>
-<!-- </a> -->
