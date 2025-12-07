@@ -14,6 +14,7 @@ theme: minima
 header_pages:
   - index.md
   - publications.md
+  - gallery.md
 
 # --- Social Media (Appears in Footer) ---
 github_username: maza75
