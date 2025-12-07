@@ -6,6 +6,14 @@ order: 3
 ---
 
 <style>
+  /* --- WIDE LAYOUT FIX (Makes this page full width) --- */
+  .wrapper {
+    max-width: 1250px !important;
+    width: 95% !important;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
   /* --- PAGE STYLING --- */
   h2 { color: #003366; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 40px;}
   p { font-size: 1.1em; color: #444; }
@@ -13,8 +21,8 @@ order: 3
   /* --- PHOTO GRID SYSTEM --- */
   .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Made grid slightly larger for laptop */
+    gap: 30px; /* Increased gap */
     margin-top: 20px;
   }
 
@@ -34,8 +42,8 @@ order: 3
 
   .gallery-card img {
     width: 100%;
-    height: 200px; /* Fixed height for uniformity */
-    object-fit: cover; /* Crops image nicely */
+    height: 250px; /* Increased height for laptop view */
+    object-fit: cover;
     border-bottom: 3px solid #003366;
   }
 
@@ -44,13 +52,13 @@ order: 3
     text-align: center;
   }
   
-  .caption h4 { margin: 0; color: #003366; font-size: 1em; }
-  .caption span { font-size: 0.85em; color: #666; }
+  .caption h4 { margin: 0; color: #003366; font-size: 1.1em; }
+  .caption span { font-size: 0.9em; color: #666; }
 
   /* --- NAVIGATION BUTTON --- */
   .nav-btn {
     display: inline-block; padding: 8px 16px; border: 1px solid #003366;
-    color: #003366; border-radius: 4px; text-decoration: none; font-weight: bold; margin-bottom: 20px;
+    background-color: white; color: #003366; border-radius: 4px; text-decoration: none; font-weight: bold; margin-bottom: 20px;
   }
   .nav-btn:hover { background-color: #003366; color: white; text-decoration: none; }
 </style>
