@@ -5,327 +5,275 @@ order: 1
 ---
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono&family=vt323&display=swap');
+  /* --- 🌌 IMPORT FONTS --- */
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Share+Tech+Mono&display=swap');
 
-  /* --- 🌌 GLOBAL SYSTEM SETTINGS 🌌 --- */
+  /* --- 🚀 CORE SYSTEM --- */
+  :root {
+    --neon-blue: #00f3ff;
+    --neon-pink: #ff00ff;
+    --matrix-green: #0f0;
+    --void-bg: #050505;
+    --panel-bg: #0d0d12;
+    --border-color: #1f1f2e;
+  }
+
   html, body {
     overflow-x: hidden;
     max-width: 100%;
-  }
-
-  body {
-    background-color: #050505;
-    background: radial-gradient(circle at center, #1a1a2e 0%, #000000 100%);
+    background-color: var(--void-bg);
+    background-image: 
+      radial-gradient(circle at 50% 50%, #1a1a2e 0%, #000000 100%);
     color: #a8b2d1;
     font-family: 'Space Mono', monospace;
-    cursor: crosshair;
   }
 
-  /* --- CRT SCANLINE OVERLAY --- */
-  body::before {
+  /* --- 📺 CRT SCANLINE OVERLAY --- */
+  body::after {
     content: " ";
     display: block;
     position: fixed; top: 0; left: 0; bottom: 0; right: 0;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
     z-index: 9999;
     background-size: 100% 2px, 3px 100%;
     pointer-events: none;
   }
 
-  /* --- 📱 RESPONSIVE LAYOUT LOGIC 📱 --- */
-  .wrapper { 
-    width: 95% !important; 
-    padding: 0 10px !important; 
-    max-width: 100% !important;
+  /* --- 📐 LAYOUT UTILITIES --- */
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
   }
 
-  @media screen and (min-width: 1000px) {
-    .wrapper { 
-      max-width: 1400px !important; 
-      width: 92% !important; 
-      padding: 0 !important; 
-    }
-  }
-
-  /* --- HUD TOP BAR --- */
-  .hud-bar {
-    border-bottom: 1px solid #333;
-    padding: 10px 0;
-    margin-bottom: 30px;
-    display: flex;
-    justify-content: space-between;
+  /* --- 📟 HEADERS & TYPOGRAPHY --- */
+  h1, h2, h3 {
     font-family: 'Orbitron', sans-serif;
-    font-size: 0.8em;
-    color: #555;
-    text-transform: uppercase;
-  }
-  .hud-status { color: #0f0; text-shadow: 0 0 5px #0f0; }
-
-  /* --- TYPOGRAPHY --- */
-  h1, h2, h3 { 
-    font-family: 'Orbitron', sans-serif; 
     text-transform: uppercase;
     letter-spacing: 2px;
   }
-  
-  h1 { 
-    font-weight: 900; 
-    background: -webkit-linear-gradient(#00d2ff, #3a7bd5);
+
+  h1 {
+    font-size: 2.5em;
+    font-weight: 900;
+    background: -webkit-linear-gradient(var(--neon-blue), #3a7bd5);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 10px rgba(0,210,255,0.5));
-    font-size: 2em;
-    line-height: 1.2;
+    text-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+    margin-bottom: 5px;
   }
 
-  h3 { color: #ff00ff; border-left: 5px solid #00d2ff; padding-left: 15px; font-size: 1.2em; }
-
-  strong { color: #00d2ff; }
-  a { color: #ff00ff; text-decoration: none; border-bottom: 1px dashed #ff00ff; transition: 0.3s; }
-  a:hover { background: #ff00ff; color: #000; text-decoration: none; border-bottom: none; }
-
-  /* --- 🛸 HERO SECTION --- */
-  .hero-panel {
-    background: rgba(10, 10, 15, 0.8);
-    border: 1px solid #333;
-    padding: 30px 15px;
-    border-radius: 20px;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 0 30px rgba(0, 210, 255, 0.05);
-    margin-bottom: 40px;
+  h2 {
+    color: var(--neon-pink);
+    border-bottom: 1px solid var(--neon-pink);
+    padding-bottom: 10px;
+    margin-top: 40px;
+    font-size: 1.4em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 
-  .hero-panel::before {
-    content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px;
-    background: linear-gradient(45deg, #ff00ff, #000, #00d2ff, #000);
-    z-index: -1;
-    border-radius: 22px;
-    background-size: 400%;
-    animation: glowing 20s linear infinite;
-  }
-  @keyframes glowing { 0% { background-position: 0 0; } 50% { background-position: 400% 0; } 100% { background-position: 0 0; } }
-
-  .typewriter {
-    display: inline-block;
-    margin: 0 auto;
-  }
-  .typewriter p {
-    font-size: 1em; 
-    color: #fff;
-    margin: 0;
-  }
-
-  /* --- 🧪 DATA MODULES --- */
-  .box {
-    background: #0d0d12;
-    border: 1px solid #1f1f2e;
-    padding: 20px;
-    margin-bottom: 30px;
-    transition: 0.3s;
-    position: relative;
-  }
-  .box:hover {
-    border-color: #00d2ff;
-    box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
-  }
-  .box::after {
-    content: " [SECURE]";
-    position: absolute; top: 10px; right: 10px;
-    font-size: 0.7em; color: #333; font-family: 'Orbitron';
-  }
-
-  /* --- 🕹️ BUTTONS --- */
-  .btn-container { text-align: center; margin: 40px 0; }
-  
-  .cyber-btn {
-    background: transparent;
-    color: #00d2ff;
-    font-family: 'Orbitron';
-    font-size: 1em;
-    padding: 12px 20px;
-    border: 2px solid #00d2ff;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    position: relative;
-    transition: 0.3s;
+  a {
+    color: var(--neon-blue);
     text-decoration: none;
-    border-bottom: 2px solid #00d2ff;
-    display: inline-block;
+    border-bottom: 1px dashed var(--neon-blue);
+    transition: 0.3s;
+  }
+  a:hover {
+    background: var(--neon-blue);
+    color: #000;
+    text-decoration: none;
+    border-bottom: none;
+  }
+
+  /* --- 🎛️ HUD STATUS BAR --- */
+  .hud-bar {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid var(--border-color);
+    background: rgba(0,0,0,0.5);
+    padding: 10px 15px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.85em;
+    color: #666;
+    margin-bottom: 30px;
+    border-radius: 4px;
+  }
+  .status-ok { color: var(--matrix-green); text-shadow: 0 0 5px var(--matrix-green); }
+  .status-warn { color: var(--neon-pink); animation: blink 2s infinite; }
+
+  @keyframes blink { 0% {opacity: 1;} 50% {opacity: 0.3;} 100% {opacity: 1;} }
+
+  /* --- 📦 CONTENT BOXES --- */
+  .terminal-box {
+    background: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--neon-blue);
+    padding: 20px;
+    margin-bottom: 25px;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .terminal-box:hover {
+    transform: translateX(5px);
+    box-shadow: -5px 5px 0px rgba(0, 243, 255, 0.1);
+  }
+  
+  .terminal-box.warning {
+    border-left: 4px solid var(--neon-pink);
+    background: repeating-linear-gradient(
+      45deg,
+      #131313,
+      #131313 10px,
+      #1a1a1a 10px,
+      #1a1a1a 20px
+    );
+  }
+
+  /* --- 🏷️ TECH TAGS --- */
+  .tech-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
     margin-top: 10px;
   }
-  .cyber-btn:hover {
-    background: #00d2ff;
+  .tech-tag {
+    background: rgba(0, 243, 255, 0.1);
+    border: 1px solid var(--neon-blue);
+    color: var(--neon-blue);
+    padding: 4px 10px;
+    font-size: 0.8em;
+    font-family: 'Share Tech Mono', monospace;
+    border-radius: 2px;
+  }
+  .tech-tag:hover {
+    background: var(--neon-blue);
     color: #000;
-    box-shadow: 0 0 30px #00d2ff;
+    cursor: crosshair;
   }
 
-  /* --- 🤣 COMEDY WARNING BOX --- */
-  .warning-box {
-    background: repeating-linear-gradient(45deg, #1a1a1a, #1a1a1a 10px, #222 10px, #222 20px);
-    border: 2px solid #ff9f43;
-    color: #ff9f43;
-    padding: 20px;
-    text-align: center;
-    font-style: italic;
-    margin-top: 50px;
+  /* --- 🖱️ BUTTON --- */
+  .btn-cyber {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 25px;
+    border: 1px solid var(--neon-pink);
+    color: var(--neon-pink);
+    font-family: 'Orbitron';
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    border-bottom: 1px solid var(--neon-pink); /* Overrides global link style */
   }
-  .warning-icon { font-size: 2em; display: block; margin-bottom: 10px; }
-
-  /* --- 📡 BLING BLING SIGNAL BEACON --- */
-  .signal-beacon {
-    position: fixed; bottom: 20px; right: 20px;
-    width: 60px; height: 60px;
-    background: radial-gradient(circle, #ff55ff 10%, #ff00ff 100%); /* Shiny Gradient */
-    border-radius: 50%;
-    display: flex; justify-content: center; align-items: center;
-    box-shadow: 0 0 20px #ff00ff, 0 0 40px rgba(255, 0, 255, 0.4);
-    z-index: 10000;
-    border: 2px solid white;
-    animation: bounce 2s infinite ease-in-out;
-  }
-  
-  /* The Ripple Effect (Radar Ping) */
-  .signal-beacon::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    border-radius: 50%;
-    border: 2px solid #ff00ff;
-    animation: ripple 1.5s infinite ease-out;
-    z-index: -1;
+  .btn-cyber:hover {
+    background: var(--neon-pink);
+    color: #fff;
+    box-shadow: 0 0 15px var(--neon-pink);
   }
 
-  .signal-beacon:hover { 
-    transform: scale(1.1); 
-    background: #fff; 
-    border-color: #ff00ff;
-  }
-  .signal-beacon:hover .icon-svg { fill: #ff00ff; }
-  
-  .icon-svg { width: 30px; fill: #fff; transition: 0.3s; }
+  /* --- 💫 GLITCH TEXT EFFECT --- */
+  .glitch-wrapper { position: relative; display: inline-block; }
+  .user-role { font-size: 1.1em; color: #fff; margin-bottom: 20px; display: block;}
 
-  /* --- ANIMATIONS --- */
-  @keyframes ripple {
-    0% { transform: scale(1); opacity: 1; }
-    100% { transform: scale(2.5); opacity: 0; }
-  }
-  
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-  }
-
-  /* --- 📱 MOBILE SPECIFIC --- */
+  /* --- 📱 MOBILE --- */
   @media screen and (max-width: 768px) {
-    .hud-bar { flex-direction: column; text-align: center; gap: 5px; }
     h1 { font-size: 1.8em; }
-    .hero-panel p { font-size: 0.95em; }
-    .typewriter p { white-space: normal; border: none; animation: none; }
-    .toolkit-span { display: block !important; margin: 5px auto !important; width: 80%; }
+    .hud-bar { flex-direction: column; text-align: center; gap: 5px; }
   }
-
-  @media screen and (min-width: 1000px) {
-    .hero-panel { padding: 50px; }
-    h1 { font-size: 3em; }
-    .typewriter {
-      overflow: hidden; white-space: nowrap; animation: typing 3.5s steps(40, end); border-right: .15em solid orange;
-    }
-    @keyframes typing { from { width: 0 } to { width: 100% } }
-  }
-
 </style>
 
-<div class="hud-bar">
-  <span>System: <span class="hud-status">ONLINE</span></span>
-  <span>Loc: EARTH-982</span>
-  <span>Caffeine: <span style="color:red">CRITICAL</span></span>
-</div>
+<div class="container">
 
-<div class="content-box">
-    <p>
-        <strong>Greetings, Observer.</strong> 👋
-    </p>
-    <p>
-        I am a PhD Research Scholar at the <strong>Department of Mathematics, Presidency University, Kolkata</strong>. 
-        Under the guidance of <strong>Dr. Supriya Pan</strong>, I investigate the underlying fabric of the cosmos.
-    </p>
-    <p>
-        My research sits at the intersection of <strong>Theoretical Physics</strong> and <strong>Astronomical Observation</strong>. 
-        My goal? To reconstruct the expansion history of the Universe and figure out if <strong>Dark Energy</strong> is real, or if the Universe is just pranking us.
-    </p>
-</div>
+  <div class="hud-bar">
+    <span>SYSTEM: <span class="status-ok">ONLINE</span></span>
+    <span>LOC: EARTH-982 (Kolkata)</span>
+    <span>COFFEE LEVEL: <span class="status-warn">CRITICAL (12%)</span></span>
+  </div>
 
-<div class="section-header">
-    <span class="icon">📂</span>
-    <h2>Case File: Cosmology</h2>
-</div>
-<div class="content-box">
-    <p>
-        I employ both <strong>parametric</strong> (testing theories) and <strong>non-parametric</strong> (letting data speak) methodologies. 
-        I combine rigorous math with data from distant galaxies, CMB radiation, and large-scale structures to answer one question: <em>What is the ultimate fate of the Universe?</em>
-    </p>
+  <header>
+    <h1>MAZAHARUL ABEDIN</h1>
+    <span class="user-role">> Ph.D. Research Scholar | Cosmetic Architect | Void Stare-er</span>
     
-    <div class="box" style="margin-top: 20px;">
-        <strong>Key Objectives:</strong>
-        <ul>
-            <li><strong>Dark Energy Forensics:</strong> Reconstructing the Hubble and deceleration parameters to understand late-time acceleration.</li>
-            <li><strong>Testing ΛCDM:</strong> The "Standard Model" is robust, but I look for the cracks (deviations) using datasets like SNe Ia and DESI-BAO.</li>
-            <li><strong>Model-Independent Recon:</strong> Using Machine Learning to extract cosmic signals without theoretical bias.</li>
-        </ul>
+    <div class="terminal-box">
+      <p>
+        <strong>[INITIATING GREETING PROTOCOL...]</strong><br><br>
+        Greetings, carbon-based lifeform. 👋 <br>
+        I am currently operating out of the <strong>Department of Mathematics, Presidency University</strong> under the command of <strong>Dr. Supriya Pan</strong>.
+      </p>
+      <p>
+        My primary directive is to investigate the <strong>fabric of the Universe</strong>. I spend my days asking the Cosmos why it is expanding so fast, and the Cosmos usually responds with "SegFault: Core Dumped."
+      </p>
     </div>
-</div>
+  </header>
 
-<div class="section-header">
-    <span class="icon">🛠</span>
-    <h2>The Arsenal (Methodology)</h2>
-</div>
-<div class="content-box">
-    <p>
-        To model the Universe, I rely on Bayesian inference and modern computation. 
-        I often use <strong>Gaussian Processes</strong> to find patterns in chaos and <strong>MCMC sampling</strong> to find the truth in the noise.
-    </p>
+  <section>
+    <h2><span style="filter: grayscale(1);">🔭</span> CASE FILE: COSMOLOGY</h2>
     
-    <div style="margin-top: 15px;">
-        <span class="code-font" style="color: #888;">// MACHINE LEARNING & STATS</span>
-        <div class="tech-grid">
-            <span class="tech-tag">Gaussian Processes</span>
-            <span class="tech-tag">Gapp</span>
-            <span class="tech-tag">tinygp</span>
-            <span class="tech-tag">JAX</span>
-            <span class="tech-tag">NumPyro</span>
-            <span class="tech-tag">ANNs</span>
-        </div>
+    <div class="terminal-box">
+      <p>The Universe is 95% dark stuff we don't understand. My job is to fix that using <strong>Theoretical Physics</strong> and <strong>Astronomical Observations</strong>.</p>
+      
+      <p><strong>CURRENT MISSION OBJECTIVES:</strong></p>
+      <ul>
+        <li><strong>Dark Energy Forensics:</strong> Reconstructing Hubble parameters to figure out why the Universe is stepping on the gas pedal.</li>
+        <li><strong>Interrogating the Data:</strong> Using Machine Learning to make the data confess its secrets without using theoretical torture methods (Model-Independent Reconstruction).</li>
+        <li><strong>Breaking the ΛCDM Model:</strong> The standard model is cool, but have you tried breaking it with SNe Ia and DESI-BAO data? Fun times.</li>
+      </ul>
     </div>
+  </section>
 
-    <div style="margin-top: 15px;">
-        <span class="code-font" style="color: #888;">// COSMOLOGY PACKAGES</span>
-        <div class="tech-grid">
-            <span class="tech-tag">CLASS</span>
-            <span class="tech-tag">MontePython</span>
-            <span class="tech-tag">Cobaya</span>
-            <span class="tech-tag">Colfi</span>
-            <span class="tech-tag">emcee</span>
-        </div>
+  <section>
+    <h2><span style="filter: grayscale(1);">🛠</span> THE ARSENAL</h2>
+    <p>When math gets too hard, I make the computer do it.</p>
+
+    <div class="terminal-box">
+      <span style="color: #666; font-size: 0.8em;">// LOADED_MODULES: STATS_&_ML</span>
+      <div class="tech-grid">
+        <span class="tech-tag">Gaussian Processes</span>
+        <span class="tech-tag">Gapp</span>
+        <span class="tech-tag">JAX</span>
+        <span class="tech-tag">NumPyro</span>
+        <span class="tech-tag">ANNs</span>
+        <span class="tech-tag">Bayesian Inference</span>
+      </div>
+
+      <br>
+      <span style="color: #666; font-size: 0.8em;">// LOADED_MODULES: COSMO_SIMS</span>
+      <div class="tech-grid">
+        <span class="tech-tag">CLASS</span>
+        <span class="tech-tag">MontePython</span>
+        <span class="tech-tag">Cobaya</span>
+        <span class="tech-tag">emcee</span>
+      </div>
     </div>
-</div>
+  </section>
 
-<div class="section-header">
-    <span class="icon">🎭</span>
-    <h2>Human Simulation Mode</h2>
-</div>
-<div class="warning-box">
-    <span class="warning-label">STATUS: OFFLINE</span>
-    <p>
-        <strong>Balance is key.</strong> When the code compiles (or crashes), I switch contexts.
-    </p>
-    <p>
-        I thrive on creativity, movement, and laughter. Inspired by the timeless humor of <strong>Charlie Chaplin</strong> and <strong>Mr. Bean</strong>, I believe that a little absurdity is necessary to understand a chaotic Universe.
-    </p>
-    <p>
-        <strong>Current Activities:</strong><br>
-        🏏 <strong>Sports:</strong> Keeping the kinetic energy high.<br>
-        🎬 <strong>Cinema:</strong> From thought-provoking dramas to light-hearted comedies.<br>
-        🎨 <strong>Digital Content:</strong> Blending storytelling with imagination.
-    </p>
+  <section>
+    <h2><span style="filter: grayscale(1);">🎭</span> SIMULATION ERROR: HUMANITY DETECTED</h2>
+    
+    <div class="terminal-box warning">
+      <p style="color: #ff9f43; font-weight: bold;">⚠ WARNING: LOGIC FAILURE IMMINENT</p>
+      <p>
+        If I stare at the Friedmann equations for too long, I start hallucinating Greek letters. To prevent system overheating, I engage in <strong>"Fun"</strong>.
+      </p>
+      <p>
+        I believe the Universe is a cosmic comedy, and we are the punchline. Inspired by the chaotic energy of <strong>Mr. Bean</strong> and the silent genius of <strong>Charlie Chaplin</strong>, I try to navigate life with maximum awkwardness and minimum grace.
+      </p>
+      <p>
+        <strong>Status Report:</strong><br>
+        🏏 <strong>Sports:</strong> Running away from my responsibilities.<br>
+        🎬 <strong>Cinema:</strong> Watching movies to forget that $H(z)$ is hard to reconstruct.<br>
+        🎨 <strong>Art:</strong> Creating posters that make no sense, much like Quantum Mechanics.
+      </p>
+    </div>
+  </section>
+
+  <section style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+    <p style="font-family: 'Orbitron'; font-size: 1.2em;"> ٹ END OF TRANSMISSION ٹ </p>
+    <a href="mailto:mazaharul.rs@presiuniv.ac.in" class="btn-cyber">ESTABLISH UPLINK (EMAIL)</a>
+    <br><br>
+    <a href="https://github.com/maza75" style="font-size: 0.9em;">[ACCESS GITHUB REPOSITORY]</a>
+  </section>
+
 </div>
