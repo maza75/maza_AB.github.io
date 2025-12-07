@@ -6,6 +6,14 @@ order: 2
 ---
 
 <style>
+  /* --- WIDE LAYOUT FIX (Makes this page full width) --- */
+  .wrapper {
+    max-width: 1250px !important;
+    width: 95% !important;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
   /* --- PUBLICATIONS STYLES --- */
   h2 { color: #003366; }
   h3 { color: #003366; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 40px; }
@@ -38,7 +46,7 @@ order: 2
   /* Navigation Button */
   .nav-btn {
     display: inline-block; padding: 8px 16px; border: 1px solid #003366;
-    color: #003366; border-radius: 4px; text-decoration: none; font-weight: bold; margin-bottom: 20px;
+    background-color: white; color: #003366; border-radius: 4px; text-decoration: none; font-weight: bold; margin-bottom: 20px;
   }
   .nav-btn:hover { background-color: #003366; color: white; text-decoration: none; }
 </style>
