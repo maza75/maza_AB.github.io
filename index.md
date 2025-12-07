@@ -1,15 +1,17 @@
 ---
 layout: home
 title: Home
+order: 1
 ---
 
 <style>
-  /* This adds custom colors to your Minima theme */
-  h1, h2, h3 { color: #003366; } /* Academic Dark Blue */
-  strong { color: #005b96; } /* Lighter Blue for emphasis */
-  a { color: #d35400; text-decoration: none; } /* Burnt Orange for links */
+  /* --- CUSTOM STYLES FOR HOME --- */
+  h1, h2, h3 { color: #003366; } 
+  strong { color: #005b96; } 
+  a { color: #d35400; text-decoration: none; } 
   a:hover { text-decoration: underline; }
   
+  /* Tech Tag Styling */
   .tech-tag {
     background-color: #f0f5f9;
     padding: 3px 8px;
@@ -28,6 +30,24 @@ title: Home
     border-left: 5px solid #003366;
     padding: 15px;
     margin-bottom: 20px;
+  }
+
+  /* --- THIS IS THE BUTTON STYLE --- */
+  .btn-pub {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #003366; /* Dark Blue */
+    color: white !important;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none !important;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .btn-pub:hover {
+    background-color: #d35400; /* Turns Orange on Hover */
+    text-decoration: none;
   }
 </style>
 
@@ -55,6 +75,13 @@ My primary focus is **Observational Cosmology**. I employ both parametric and no
 
 ---
 
+### 📜 Publications
+I have authored papers on dark energy interactions and model-independent reconstructions.
+
+<a href="/publications/" class="btn-pub">View Full List of Publications →</a>
+
+---
+
 ### 💻 Methodological Framework & Tools
 
 I blend rigorous mathematics with modern computation. My workflow involves Bayesian inference, MCMC sampling, and Machine Learning.
@@ -67,17 +94,6 @@ I blend rigorous mathematics with modern computation. My workflow involves Bayes
 
 ---
 
-### 🎭 Beyond Science
-Outside the academic realm, I believe that a balance between scientific rigor and artistic expression shapes my unique perspective.
-
-* **Creativity:** I enjoy creating digital content that blends storytelling with imagination.
-* **Inspiration:** I am deeply inspired by legendary comedians like **Charlie Chaplin** and **Mr. Bean**. Their expressive humor nurtures my love for acting and comedy.
-* **Lifestyle:** I stay grounded through sports and enjoy exploring thought-provoking cinema with friends.
-
----
-
 ### 📬 Contact Me
-I am always open to discussing cosmology, data analysis, or collaborative projects.
-
 * **Email:** [mazaharul.rs@presiuniv.ac.in](mailto:mazaharul.rs@presiuniv.ac.in)
 * **GitHub:** [github.com/maza75](https://github.com/maza75)
