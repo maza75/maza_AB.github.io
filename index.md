@@ -8,16 +8,20 @@ order: 1
   @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono&family=vt323&display=swap');
 
   /* --- 🌌 GLOBAL SYSTEM SETTINGS 🌌 --- */
+  html, body {
+    overflow-x: hidden; /* Prevents side-scrolling on phone */
+    max-width: 100%;
+  }
+
   body {
     background-color: #050505;
     background: radial-gradient(circle at center, #1a1a2e 0%, #000000 100%);
     color: #a8b2d1;
     font-family: 'Space Mono', monospace;
-    overflow-x: hidden;
     cursor: crosshair; /* Sci-Fi Cursor */
   }
 
-  /* --- CRT SCANLINE OVERLAY (Retro Monitor Effect) --- */
+  /* --- CRT SCANLINE OVERLAY --- */
   body::before {
     content: " ";
     display: block;
@@ -25,19 +29,32 @@ order: 1
     background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
     z-index: 9999;
     background-size: 100% 2px, 3px 100%;
-    pointer-events: none; /* Lets you click through it */
+    pointer-events: none;
   }
 
-  /* --- WIDE LAYOUT FIX --- */
+  /* --- 📱 RESPONSIVE LAYOUT LOGIC 📱 --- */
+  
+  /* DEFAULT (Mobile First) */
+  .wrapper { 
+    width: 95% !important; 
+    padding: 0 10px !important; 
+    max-width: 100% !important;
+  }
+
+  /* LAPTOP (Screens wider than 1000px) */
   @media screen and (min-width: 1000px) {
-    .wrapper { max-width: 1400px !important; width: 92% !important; padding: 0 !important; }
+    .wrapper { 
+      max-width: 1400px !important; 
+      width: 92% !important; 
+      padding: 0 !important; 
+    }
   }
 
-  /* --- HUD (Heads Up Display) TOP BAR --- */
+  /* --- HUD TOP BAR --- */
   .hud-bar {
     border-bottom: 1px solid #333;
     padding: 10px 0;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     display: flex;
     justify-content: space-between;
     font-family: 'Orbitron', sans-serif;
@@ -45,13 +62,13 @@ order: 1
     color: #555;
     text-transform: uppercase;
   }
-  .hud-status { color: #0f0; text-shadow: 0 0 5px #0f0; } /* Glowing Green */
+  .hud-status { color: #0f0; text-shadow: 0 0 5px #0f0; }
 
   /* --- TYPOGRAPHY --- */
   h1, h2, h3 { 
     font-family: 'Orbitron', sans-serif; 
     text-transform: uppercase;
-    letter-spacing: 3px;
+    letter-spacing: 2px; /* Reduced slightly for mobile safety */
   }
   
   h1 { 
@@ -60,9 +77,11 @@ order: 1
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 0 10px rgba(0,210,255,0.5));
+    font-size: 2em; /* Default Mobile Size */
+    line-height: 1.2;
   }
 
-  h3 { color: #ff00ff; border-left: 5px solid #00d2ff; padding-left: 15px; }
+  h3 { color: #ff00ff; border-left: 5px solid #00d2ff; padding-left: 15px; font-size: 1.2em; }
 
   strong { color: #00d2ff; }
   a { color: #ff00ff; text-decoration: none; border-bottom: 1px dashed #ff00ff; transition: 0.3s; }
@@ -72,12 +91,12 @@ order: 1
   .hero-panel {
     background: rgba(10, 10, 15, 0.8);
     border: 1px solid #333;
-    padding: 50px;
+    padding: 30px 15px; /* Smaller padding for mobile */
     border-radius: 20px;
     text-align: center;
     position: relative;
-    box-shadow: 0 0 50px rgba(0, 210, 255, 0.05);
-    margin-bottom: 60px;
+    box-shadow: 0 0 30px rgba(0, 210, 255, 0.05);
+    margin-bottom: 40px;
   }
 
   /* Rotating Border Effect */
@@ -94,20 +113,19 @@ order: 1
   /* Typewriter Effect Container */
   .typewriter {
     display: inline-block;
-    overflow: hidden; 
-    white-space: nowrap; 
     margin: 0 auto;
-    letter-spacing: .15em;
-    animation: typing 3.5s steps(40, end);
-    border-right: .15em solid orange; /* The cursor */
   }
-  @keyframes typing { from { width: 0 } to { width: 100% } }
+  .typewriter p {
+    font-size: 1em; 
+    color: #fff;
+    margin: 0;
+  }
 
   /* --- 🧪 DATA MODULES --- */
   .box {
     background: #0d0d12;
     border: 1px solid #1f1f2e;
-    padding: 25px;
+    padding: 20px;
     margin-bottom: 30px;
     transition: 0.3s;
     position: relative;
@@ -115,7 +133,6 @@ order: 1
   .box:hover {
     border-color: #00d2ff;
     box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
-    transform: scale(1.01);
   }
   .box::after {
     content: " [SECURE]";
@@ -124,21 +141,23 @@ order: 1
   }
 
   /* --- 🕹️ BUTTONS --- */
-  .btn-container { text-align: center; margin: 50px 0; }
+  .btn-container { text-align: center; margin: 40px 0; }
   
   .cyber-btn {
     background: transparent;
     color: #00d2ff;
     font-family: 'Orbitron';
-    font-size: 1.1em;
-    padding: 15px 30px;
+    font-size: 1em;
+    padding: 12px 20px;
     border: 2px solid #00d2ff;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     position: relative;
     transition: 0.3s;
     text-decoration: none;
-    border-bottom: 2px solid #00d2ff; /* Override default link style */
+    border-bottom: 2px solid #00d2ff;
+    display: inline-block; /* Fix for mobile buttons */
+    margin-top: 10px;
   }
   .cyber-btn:hover {
     background: #00d2ff;
@@ -148,56 +167,90 @@ order: 1
 
   /* --- 🤣 COMEDY WARNING BOX --- */
   .warning-box {
-    background: repeating-linear-gradient(
-      45deg,
-      #1a1a1a,
-      #1a1a1a 10px,
-      #222 10px,
-      #222 20px
-    );
+    background: repeating-linear-gradient(45deg, #1a1a1a, #1a1a1a 10px, #222 10px, #222 20px);
     border: 2px solid #ff9f43;
     color: #ff9f43;
     padding: 20px;
     text-align: center;
     font-style: italic;
     margin-top: 50px;
-    position: relative;
   }
   .warning-icon { font-size: 2em; display: block; margin-bottom: 10px; }
 
   /* --- 📡 BEACON --- */
   .signal-beacon {
-    position: fixed; bottom: 30px; right: 30px;
-    width: 60px; height: 60px;
+    position: fixed; bottom: 20px; right: 20px; /* Adjusted for mobile */
+    width: 50px; height: 50px;
     background: #ff00ff;
     border-radius: 50%;
     display: flex; justify-content: center; align-items: center;
     box-shadow: 0 0 20px #ff00ff;
-    z-index: 10000; /* Above scanlines */
+    z-index: 10000;
     border: none;
   }
   .signal-beacon:hover { transform: scale(1.1); background: #fff; }
-  .icon-svg { width: 30px; fill: #000; }
+  .icon-svg { width: 25px; fill: #000; }
+
+  /* --- 📱 MOBILE-SPECIFIC TWEAKS 📱 --- */
+  @media screen and (max-width: 768px) {
+    /* Stack the HUD bar vertically on phone */
+    .hud-bar { 
+      flex-direction: column; 
+      text-align: center; 
+      gap: 5px; 
+    }
+    
+    /* Make Hero text smaller */
+    h1 { font-size: 1.8em; }
+    .hero-panel p { font-size: 0.95em; }
+
+    /* Disable Typewriter Animation on Mobile (Prevents text cutting off) */
+    .typewriter p {
+      white-space: normal; /* Allow text to wrap */
+      border: none;
+      animation: none;
+    }
+
+    /* Stack toolkit items */
+    .toolkit-span {
+      display: block !important;
+      margin: 5px auto !important;
+      width: 80%;
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    /* Desktop Enhancements */
+    .hero-panel { padding: 50px; }
+    h1 { font-size: 3em; }
+    .typewriter {
+      overflow: hidden;
+      white-space: nowrap;
+      animation: typing 3.5s steps(40, end);
+      border-right: .15em solid orange;
+    }
+    @keyframes typing { from { width: 0 } to { width: 100% } }
+  }
 
 </style>
 
 <div class="hud-bar">
   <span>System: <span class="hud-status">ONLINE</span></span>
-  <span>Location: EARTH-982</span>
-  <span>Caffeine Level: <span style="color:red">CRITICAL</span></span>
+  <span>Loc: EARTH-982</span>
+  <span>Caffeine: <span style="color:red">CRITICAL</span></span>
 </div>
 
 <div class="hero-panel">
-  <h1 style="font-size: 3em; margin-bottom: 0;">MAZAHARUL</h1>
+  <h1 style="margin-bottom: 0;">MAZAHARUL</h1>
   <p style="color: #666; font-size: 0.9em; margin-top: 5px;">IDENT CODE: PHD-SCHOLAR-75</p>
   
   <br>
   
   <div class="typewriter">
-    <p style="font-size: 1.2em; color: #fff;">"Parsing the Universe, one error at a time."</p>
+    <p>"Parsing the Universe, one error at a time."</p>
   </div>
 
-  <p style="margin-top: 30px; line-height: 1.7; font-size: 1.1em;">
+  <p style="margin-top: 30px; line-height: 1.7;">
     I am a <strong>Cosmological Detective</strong> at Presidency University. <br>
     I stare at data until it confesses why the Universe is accelerating. <br>
     (Spoiler: It's mostly Dark Energy, or my code is broken).
@@ -233,11 +286,11 @@ Proof that I actually do work and don't just watch Sci-Fi movies.
 Tools I use to fight entropy and bad data.
 
 <div style="text-align: center; margin-top: 20px;">
-  <span style="border: 1px solid #333; padding: 5px 10px; margin: 5px; display: inline-block; color: #00d2ff;">PYTHON</span>
-  <span style="border: 1px solid #333; padding: 5px 10px; margin: 5px; display: inline-block; color: #00d2ff;">JAX</span>
-  <span style="border: 1px solid #333; padding: 5px 10px; margin: 5px; display: inline-block; color: #00d2ff;">MCMC</span>
-  <span style="border: 1px solid #333; padding: 5px 10px; margin: 5px; display: inline-block; color: #00d2ff;">Gaussian Processes</span>
-  <span style="border: 1px solid #333; padding: 5px 10px; margin: 5px; display: inline-block; color: #00d2ff;">CLASS</span>
+  <span class="toolkit-span" style="border: 1px solid #333; padding: 5px 10px; margin: 5px; display: inline-block; color: #00d2ff;">PYTHON</span>
+  <span class="toolkit-span" style="border: 1px solid #333; padding: 5px 10px; margin: 5px; display: inline-block; color: #00d2ff;">JAX</span>
+  <span class="toolkit-span" style="border: 1px solid #333; padding: 5px 10px; margin: 5px; display: inline-block; color: #00d2ff;">MCMC</span>
+  <span class="toolkit-span" style="border: 1px solid #333; padding: 5px 10px; margin: 5px; display: inline-block; color: #00d2ff;">Gaussian Processes</span>
+  <span class="toolkit-span" style="border: 1px solid #333; padding: 5px 10px; margin: 5px; display: inline-block; color: #00d2ff;">CLASS</span>
 </div>
 
 ---
@@ -259,4 +312,8 @@ I believe the Universe is a giant joke, and Physics is the punchline. Inspired b
 
 <br><br>
 
-
+<a href="mailto:mazaharul.rs@presiuniv.ac.in" class="signal-beacon" title="Send Distress Signal">
+  <svg class="icon-svg" viewBox="0 0 24 24">
+    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+  </svg>
+</a>
