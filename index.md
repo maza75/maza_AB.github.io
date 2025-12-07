@@ -106,6 +106,39 @@ order: 1
   a { color: var(--neon-pink); text-decoration: none; border-bottom: 1px dashed var(--neon-pink); transition: 0.3s; }
   a:hover { background: var(--neon-pink); color: #fff; border-bottom: none; }
 
+  /* --- 🤡 PROFILE IMAGE (Cartoon/Sci-Fi Style) --- */
+  .profile-container {
+    width: 180px; height: 180px;
+    margin: 0 auto 30px auto; /* Centers it */
+    position: relative;
+    border-radius: 50%; 
+    border: 4px solid var(--neon-cyan);
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.5);
+    overflow: hidden;
+    background: #000;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .profile-pic {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    /* This makes it look "Cartoonish" */
+    filter: contrast(1.1) saturate(1.3) brightness(1.1);
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  }
+
+  /* The Comedy Spin Effect on Hover */
+  .profile-container:hover .profile-pic {
+    transform: rotate(360deg) scale(1.1);
+    filter: hue-rotate(90deg); /* Glitch color shift */
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+
   /* --- ⚡ GLITCH EFFECT --- */
   .glitch { position: relative; color: white; }
   .glitch::before, .glitch::after {
@@ -225,6 +258,11 @@ order: 1
   </div>
 
   <div style="margin-bottom: 80px;">
+    
+    <div class="profile-container">
+      <img src="Mazaharul-Abedin.webp" alt="Mazaharul Abedin" class="profile-pic">
+    </div>
+
     <h1 class="glitch" data-text="MAZAHARUL ABEDIN">MAZAHARUL ABEDIN</h1>
     
     <p style="border-left: 4px solid var(--neon-pink); padding-left: 20px; font-size: clamp(1rem, 2vw, 1.4rem); color: #fff; margin-top: 20px;">
@@ -247,6 +285,7 @@ order: 1
     <div class="holo-card">
       <p>
         I employ both <strong>parametric</strong> (testing theories) and <strong>non-parametric</strong> (letting data speak) methodologies.
+        
         
 
 [Image of cosmic expansion timeline]
