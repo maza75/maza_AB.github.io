@@ -6,189 +6,191 @@ order: 2
 ---
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono&family=vt323&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Space+Mono&display=swap');
 
-  /* --- 🌌 GLOBAL SYSTEM SETTINGS 🌌 --- */
+  /* --- 🌌 DEEP SPACE BACKGROUND 🌌 --- */
   body {
-    background-color: #050505;
-    background: radial-gradient(circle at center, #0b0d17 0%, #000000 100%);
-    color: #a8b2d1;
+    background: radial-gradient(ellipse at bottom, #0b0d17 0%, #000000 100%);
+    color: #a0a0a0;
     font-family: 'Space Mono', monospace;
     overflow-x: hidden;
-    cursor: crosshair;
   }
 
-  /* --- CRT SCANLINE OVERLAY --- */
-  body::before {
-    content: " ";
-    display: block;
-    position: fixed; top: 0; left: 0; bottom: 0; right: 0;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-    z-index: 9999;
-    background-size: 100% 2px, 3px 100%;
-    pointer-events: none;
+  /* Animated Stars */
+  .stars {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: transparent; z-index: -1;
   }
+  .stars::after {
+    content: " "; position: absolute; top: 2000px; width: 1px; height: 1px;
+    background: transparent;
+    box-shadow: 100px 200px #FFF, 230px 400px #FFF, 500px 100px #FFF, 900px 1000px #FFF;
+    animation: animStar 50s linear infinite;
+  }
+  @keyframes animStar { from { transform: translateY(-2000px); } to { transform: translateY(0px); } }
 
-  /* --- WIDE LAYOUT FIX --- */
+  /* --- 💻 LAPTOP FULL WIDTH FIX --- */
   @media screen and (min-width: 1000px) {
     .wrapper { max-width: 1400px !important; width: 92% !important; padding: 0 !important; }
   }
-
-  /* --- HUD TOP BAR --- */
-  .hud-bar {
-    border-bottom: 1px solid #333;
-    padding: 10px 0;
-    margin-bottom: 30px;
-    display: flex;
-    justify-content: space-between;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 0.8em;
-    color: #555;
-    text-transform: uppercase;
-  }
-  .hud-alert { color: #ff00ff; animation: blink 1s infinite; }
-  @keyframes blink { 50% { opacity: 0; } }
 
   /* --- TYPOGRAPHY --- */
   h2, h3 { 
     font-family: 'Orbitron', sans-serif; 
     color: #00d2ff; 
     text-transform: uppercase; 
-    letter-spacing: 2px;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
   }
   
-  /* --- 📂 DECRYPTED FILE CARDS --- */
+  /* --- 🛸 HOLOGRAPHIC DATA CARDS --- */
   .pub-card {
-    background: #0d0d12;
-    border: 1px solid #1f1f2e;
-    border-left: 4px solid #ff00ff;
+    background: rgba(16, 20, 30, 0.7); /* See-through dark glass */
+    backdrop-filter: blur(10px);        /* Blur effect behind it */
+    border: 1px solid rgba(0, 210, 255, 0.2);
     padding: 30px;
     margin-bottom: 40px;
     position: relative;
+    border-radius: 4px;
     transition: 0.3s;
+    overflow: hidden;
   }
+
   .pub-card:hover {
     border-color: #00d2ff;
-    box-shadow: 0 0 25px rgba(0, 210, 255, 0.15);
-    transform: translateX(5px);
+    box-shadow: 0 0 30px rgba(0, 210, 255, 0.15);
+    transform: scale(1.01);
+  }
+
+  /* Tactical Corner Brackets */
+  .pub-card::before {
+    content: ""; position: absolute; top: 0; left: 0; width: 20px; height: 20px;
+    border-top: 2px solid #ff00ff; border-left: 2px solid #ff00ff;
   }
   .pub-card::after {
-    content: "ACCESS_GRANTED";
-    position: absolute; top: 10px; right: 10px;
-    font-family: 'Orbitron'; font-size: 0.6em; color: #00d2ff; opacity: 0.7;
+    content: ""; position: absolute; bottom: 0; right: 0; width: 20px; height: 20px;
+    border-bottom: 2px solid #ff00ff; border-right: 2px solid #ff00ff;
   }
 
+  /* Status Tag */
+  .status-tag {
+    position: absolute; top: 15px; right: 15px;
+    font-size: 0.6em; color: #555; font-family: 'Orbitron'; letter-spacing: 1px;
+    border: 1px solid #333; padding: 2px 6px;
+  }
+  .pub-card:hover .status-tag { color: #00d2ff; border-color: #00d2ff; }
+
+  /* Content Styling */
   .paper-title {
-    font-size: 1.4em;
-    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5em;
     color: #fff;
     display: block;
-    margin-bottom: 10px;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    margin-bottom: 15px;
+    line-height: 1.4;
   }
 
-  .authors { color: #888; font-style: italic; margin-bottom: 15px; }
-  .authors strong { color: #ff00ff; }
+  .authors { color: #888; font-style: italic; margin-bottom: 15px; display: block; }
+  .authors strong { color: #ff00ff; font-weight: bold; }
+  .journal-info { color: #00d2ff; font-weight: bold; margin-bottom: 20px; display: block; text-transform: uppercase; }
 
-  /* --- 📟 TERMINAL HIGHLIGHTS --- */
-  .terminal-box {
+  /* --- 📟 TERMINAL "GIST" BOX --- */
+  .terminal-log {
     background: #000;
-    border: 1px dashed #333;
+    border-left: 3px solid #00d2ff;
     padding: 20px;
-    font-family: 'vt323', monospace;
-    font-size: 1.2em;
-    color: #0f0; /* Green Text */
-    margin-top: 20px;
+    font-family: 'Courier New', monospace;
+    color: #ccc; 
+    margin-top: 25px;
   }
-  .terminal-box::before {
-    content: "> RUN_SUMMARY.EXE";
-    display: block; color: #555; font-size: 0.8em; margin-bottom: 10px; font-family: 'Space Mono';
-  }
-  .terminal-box strong { color: #00d2ff; }
+  .terminal-log strong { color: #00d2ff; text-shadow: none; font-family: 'Orbitron'; font-size: 0.8em; }
+  .terminal-log em { color: #ff9f43; font-style: normal; }
 
   /* --- 🔗 BUTTONS --- */
-  .data-link {
+  .data-btn {
     display: inline-block;
-    padding: 8px 16px;
+    padding: 10px 20px;
     border: 1px solid #00d2ff;
     color: #00d2ff;
     font-family: 'Orbitron';
     font-size: 0.8em;
-    margin-right: 10px;
+    margin-right: 15px;
     text-decoration: none;
     text-transform: uppercase;
+    letter-spacing: 1px;
     transition: 0.3s;
+    position: relative;
+    overflow: hidden;
   }
-  .data-link:hover {
+  .data-btn:hover {
     background: #00d2ff;
     color: #000;
-    box-shadow: 0 0 15px #00d2ff;
+    box-shadow: 0 0 20px #00d2ff;
   }
 
   /* --- 🔙 NAV BUTTON --- */
   .nav-btn {
-    display: inline-block; padding: 10px 20px; border: 2px solid #ff9f43;
-    color: #ff9f43; font-family: 'Orbitron'; font-weight: bold; margin-bottom: 30px;
+    display: inline-block; padding: 12px 25px; border: 2px solid #ff9f43;
+    color: #ff9f43; font-family: 'Orbitron'; font-weight: bold; margin-bottom: 40px;
     text-transform: uppercase; letter-spacing: 2px; text-decoration: none;
   }
-  .nav-btn:hover { background: #ff9f43; color: #000; box-shadow: 0 0 20px #ff9f43; }
+  .nav-btn:hover { background: #ff9f43; color: #000; box-shadow: 0 0 25px #ff9f43; }
 
 </style>
 
-<div class="hud-bar">
-  <span>Archive Status: <span style="color:#00d2ff">DECRYPTED</span></span>
-  <span>Security Level: <span class="hud-alert">ZERO</span></span>
-</div>
+<div class="stars"></div>
 
-<a href="/" class="nav-btn">← Return to Mainframe</a>
+<a href="/" class="nav-btn">← Return to Base</a>
 
-<div style="text-align: center; margin-bottom: 50px;">
-  <h2>CLASSIFIED ARCHIVES</h2>
-  <p style="color: #666;">"Here lies the proof that I convert caffeine into algebra."</p>
+<div style="text-align: center; margin-bottom: 60px;">
+  <h2>RESEARCH_DATABASE // DECRYPTED</h2>
+  <p style="color: #666; font-size: 0.9em; letter-spacing: 1px;">"Proof that I spend my weekends calculating the end of the world."</p>
 </div>
 
 ---
 
-### // LOG ENTRY: 2025
+### // SYSTEM LOG: 2025
 
 <div class="pub-card">
+  <div class="status-tag">STATUS: PUBLISHED</div>
   <span class="paper-title">In Search of an Interaction in the Dark Sector through Gaussian Process and ANN Approaches</span>
-  <div class="authors">
-    <strong>Mazaharul Abedin</strong>, Guo-Jian Wang, Yin-Zhe Ma, Supriya Pan
-  </div>
-  <div style="color: #00d2ff; font-weight: bold; margin-bottom: 15px;">
-    MNRAS (The Royal Astronomical Society)
-  </div>
   
-  <div style="margin-bottom: 20px;">
-    <a href="https://doi.org/10.1093/mnras/staf762" class="data-link">📡 DOI Link</a>
-    <a href="https://arxiv.org/abs/2505.04336" class="data-link">📄 ArXiv File</a>
+  <span class="journal-info">MNRAS (The Royal Astronomical Society)</span>
+  
+  <span class="authors">
+    <strong>Mazaharul Abedin</strong>, Guo-Jian Wang, Yin-Zhe Ma, Supriya Pan
+  </span>
+  
+  <div style="margin-top: 15px;">
+    <a href="https://doi.org/10.1093/mnras/staf762" class="data-btn">📡 Access DOI</a>
+    <a href="https://arxiv.org/abs/2505.04336" class="data-btn">📄 ArXiv Data</a>
   </div>
 
-  <div class="terminal-box">
-    <strong>> THE GIST:</strong><br>
-    We used AI (Neural Networks) to spy on the Universe. We wanted to know if Dark Matter and Dark Energy are secretly gossiping (interacting).<br><br>
+  <div class="terminal-log">
+    <strong>> EXEC_SUMMARY:</strong><br>
+    We deployed <em>Artificial Neural Networks</em> to spy on the Universe. The goal? To find out if Dark Matter and Dark Energy are secretly gossiping (interacting) behind our backs.<br><br>
     <strong>> RESULT:</strong><br>
-    Detecting interaction signals. The standard model is sweating nervously.
+    Interaction detected. Standard Cosmology models are currently panicking.
   </div>
 </div>
 
 <div class="pub-card">
+  <div class="status-tag">STATUS: PREPRINT</div>
   <span class="paper-title">When Dark Matter Heats Up: A Model-Independent Search for Non-Cold Behavior</span>
-  <div class="authors">
-    <strong>Mazaharul Abedin</strong>, Luis A. Escamilla, Supriya Pan, Eleonora Di Valentino, Weiqiang Yang
-  </div>
-  <div style="color: #00d2ff; font-weight: bold; margin-bottom: 15px;">
-    Preprint / ArXiv
-  </div>
   
-  <div style="margin-bottom: 20px;">
-    <a href="https://arxiv.org/abs/2505.09470" class="data-link">📄 ArXiv File</a>
+  <span class="journal-info">Preprint / ArXiv</span>
+  
+  <span class="authors">
+    <strong>Mazaharul Abedin</strong>, Luis A. Escamilla, Supriya Pan, Eleonora Di Valentino, Weiqiang Yang
+  </span>
+  
+  <div style="margin-top: 15px;">
+    <a href="https://arxiv.org/abs/2505.09470" class="data-btn">📄 ArXiv Data</a>
   </div>
 
-  <div class="terminal-box">
-    <strong>> THE GIST:</strong><br>
-    Everyone assumes Dark Matter is "Cold" (slow and boring). We checked if maybe it has some pressure (is it getting hot in here?).<br><br>
+  <div class="terminal-log">
+    <strong>> EXEC_SUMMARY:</strong><br>
+    Everyone assumes Dark Matter is "Cold" (slow and boring). We checked if maybe it has some <em>pressure</em> (is it getting hot in here?) using model-independent reconstruction.<br><br>
     <strong>> RESULT:</strong><br>
     Evidence is mild, but we can't rule it out. Dark Matter remains the Universe's most annoying mystery.
   </div>
@@ -197,5 +199,5 @@ order: 2
 ---
 
 <div style="text-align: center; margin-top: 50px;">
-  <a href="/" class="nav-btn">← Return to Mainframe</a>
+  <a href="/" class="nav-btn">← Return to Base</a>
 </div>
