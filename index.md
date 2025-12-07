@@ -24,7 +24,7 @@ order: 1
     width: 100%; overflow-x: hidden;
     background-color: var(--void-bg);
     color: #a8b2d1;
-    font-family: 'Share Tech Mono', monospace; /* More code-like font */
+    font-family: 'Share Tech Mono', monospace;
   }
 
   /* --- 🌐 MOVING 3D GRID BACKGROUND --- */
@@ -48,10 +48,10 @@ order: 1
     pointer-events: none;
   }
 
-  /* --- 📐 DYNAMIC WRAPPER (Responsive Engine) --- */
+  /* --- 📐 DYNAMIC WRAPPER --- */
   .wrapper {
     width: 100%;
-    max-width: 1200px; /* Wider for laptops */
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
     box-sizing: border-box;
@@ -59,7 +59,7 @@ order: 1
     z-index: 2;
   }
 
-  /* --- 🎛️ HUD STATUS BAR (Glass) --- */
+  /* --- 🎛️ HUD STATUS BAR --- */
   .hud-bar {
     display: flex;
     justify-content: space-between;
@@ -81,7 +81,6 @@ order: 1
   h1 {
     font-family: 'Orbitron', sans-serif;
     font-weight: 900;
-    /* DYNAMIC FONT SIZING: Scales between 2rem (mobile) and 4rem (desktop) */
     font-size: clamp(2rem, 5vw, 4.5rem); 
     line-height: 1;
     margin-bottom: 10px;
@@ -108,7 +107,7 @@ order: 1
   a { color: var(--neon-pink); text-decoration: none; border-bottom: 1px dashed var(--neon-pink); transition: 0.3s; }
   a:hover { background: var(--neon-pink); color: #fff; border-bottom: none; box-shadow: 0 0 15px var(--neon-pink); }
 
-  /* --- ⚡ GLITCH EFFECT FOR NAME --- */
+  /* --- ⚡ GLITCH EFFECT --- */
   .glitch { position: relative; color: white; }
   .glitch::before, .glitch::after {
     content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--void-bg);
@@ -125,79 +124,35 @@ order: 1
     padding: 30px;
     border-radius: 4px;
     position: relative;
-    backdrop-filter: blur(10px); /* Blurs the grid behind it */
+    backdrop-filter: blur(10px);
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
     transition: transform 0.3s, border-color 0.3s;
     overflow: hidden;
   }
+  .holo-card:hover { transform: translateY(-5px); border-color: rgba(0, 243, 255, 0.3); box-shadow: 0 10px 30px rgba(0, 243, 255, 0.1); }
   
   /* Corner Accents */
-  .holo-card::before {
-    content: ''; position: absolute; top: 0; left: 0; width: 20px; height: 20px;
-    border-top: 2px solid var(--neon-cyan); border-left: 2px solid var(--neon-cyan);
-  }
-  .holo-card::after {
-    content: ''; position: absolute; bottom: 0; right: 0; width: 20px; height: 20px;
-    border-bottom: 2px solid var(--neon-cyan); border-right: 2px solid var(--neon-cyan);
-  }
+  .holo-card::before { content: ''; position: absolute; top: 0; left: 0; width: 20px; height: 20px; border-top: 2px solid var(--neon-cyan); border-left: 2px solid var(--neon-cyan); }
+  .holo-card::after { content: ''; position: absolute; bottom: 0; right: 0; width: 20px; height: 20px; border-bottom: 2px solid var(--neon-cyan); border-right: 2px solid var(--neon-cyan); }
 
-  .holo-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(0, 243, 255, 0.3);
-    box-shadow: 0 10px 30px rgba(0, 243, 255, 0.1);
-  }
+  /* --- 🧬 TECH GRID --- */
+  .tech-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; margin-top: 20px; }
+  .tech-node { background: rgba(255,255,255,0.03); border: 1px solid #333; padding: 10px; text-align: center; font-size: 0.9rem; color: var(--neon-cyan); transition: 0.2s; cursor: crosshair; }
+  .tech-node:hover { background: var(--neon-cyan); color: #000; box-shadow: 0 0 15px var(--neon-cyan); }
 
-  /* --- 🧬 TECH GRID (Mobile & Laptop Optimized) --- */
-  .tech-wrapper {
-    display: grid;
-    /* Auto-fit makes it responsive without media queries */
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
-    gap: 15px;
-    margin-top: 20px;
-  }
-  
-  .tech-node {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid #333;
-    padding: 10px;
-    text-align: center;
-    font-size: 0.9rem;
-    color: var(--neon-cyan);
-    transition: 0.2s;
-    cursor: crosshair;
-  }
-  .tech-node:hover {
-    background: var(--neon-cyan);
-    color: #000;
-    box-shadow: 0 0 15px var(--neon-cyan);
-  }
-
-  /* --- 🤣 HAZARD ZONE (COMEDY) --- */
+  /* --- 🤣 HAZARD ZONE --- */
   .hazard-zone {
-    background: repeating-linear-gradient(
-      45deg,
-      #1a1a1a,
-      #1a1a1a 10px,
-      #222 10px,
-      #222 20px
-    );
-    border: 2px dashed #ff9f43;
-    padding: 30px;
-    margin-top: 60px;
-    text-align: center;
-    position: relative;
+    background: repeating-linear-gradient(45deg, #1a1a1a, #1a1a1a 10px, #222 10px, #222 20px);
+    border: 2px dashed #ff9f43; padding: 30px; margin-top: 60px; text-align: center; position: relative;
   }
-  .hazard-title {
-    background: #ff9f43; color: #000; padding: 5px 15px;
-    font-family: 'Orbitron'; font-weight: bold;
-    position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
-  }
+  .hazard-title { background: #ff9f43; color: #000; padding: 5px 15px; font-family: 'Orbitron'; font-weight: bold; position: absolute; top: -15px; left: 50%; transform: translateX(-50%); }
 
-  /* --- 🕹️ BUTTONS --- */
+  /* --- 🕹️ BUTTONS (Publications/Gallery) --- */
+  .btn-container { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 30px; }
+  
   .btn-main {
     display: inline-block;
-    padding: 15px 40px;
-    margin-top: 20px;
+    padding: 15px 30px;
     border: 2px solid var(--neon-pink);
     color: var(--neon-pink);
     font-family: 'Orbitron';
@@ -207,23 +162,52 @@ order: 1
     overflow: hidden;
     z-index: 1;
     transition: 0.3s;
-    border-bottom: 2px solid var(--neon-pink); /* Override global */
+    text-decoration: none;
+    border-bottom: 2px solid var(--neon-pink);
+    background: rgba(0,0,0,0.5);
   }
-  .btn-main::before {
-    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-    background: var(--neon-pink); transition: 0.4s; z-index: -1;
-  }
-  .btn-main:hover::before { left: 0; }
-  .btn-main:hover { color: #fff; box-shadow: 0 0 20px var(--neon-pink); }
+  .btn-main:hover { color: #fff; background: var(--neon-pink); box-shadow: 0 0 30px var(--neon-pink); }
+  
+  .btn-blue { border-color: var(--neon-cyan); color: var(--neon-cyan); border-bottom: 2px solid var(--neon-cyan); }
+  .btn-blue:hover { background: var(--neon-cyan); color: #000; box-shadow: 0 0 30px var(--neon-cyan); }
 
-  /* --- 📱 MOBILE SPECIFIC TWEAKS --- */
+  /* --- 🔮 BLING BLING EMAIL ORB (Fixed) --- */
+  .email-orb {
+    position: fixed;
+    bottom: 30px; right: 30px;
+    width: 70px; height: 70px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #ff55ff, #ff00ff, #aa00aa);
+    border: 2px solid #fff;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 20px #ff00ff, inset 0 0 10px #fff;
+    z-index: 9999;
+    animation: orb-pulse 2s infinite ease-in-out;
+    transition: transform 0.3s;
+  }
+  .email-orb:hover { transform: scale(1.1) rotate(10deg); }
+  
+  /* Envelope Icon inside Orb */
+  .email-orb svg { width: 35px; height: 35px; fill: white; filter: drop-shadow(0 0 5px rgba(0,0,0,0.5)); }
+
+  /* The Ripple Waves */
+  .email-orb::before {
+    content: ''; position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px;
+    border-radius: 50%; border: 2px solid #ff00ff;
+    animation: ripple-wave 1.5s infinite linear; opacity: 0;
+  }
+
+  @keyframes orb-pulse { 0%, 100% { box-shadow: 0 0 20px #ff00ff; } 50% { box-shadow: 0 0 50px #ff00ff, 0 0 10px #fff; } }
+  @keyframes ripple-wave { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
+
+  /* --- 📱 MOBILE --- */
   @media screen and (max-width: 768px) {
     .hud-bar { padding: 10px; font-size: 0.6rem; }
     .holo-card { padding: 20px; }
-    /* Hide specific decorative elements if screen is too small */
-    .holo-card::before, .holo-card::after { width: 10px; height: 10px; }
+    .btn-container { flex-direction: column; width: 100%; }
+    .btn-main { width: 100%; text-align: center; box-sizing: border-box; }
+    .email-orb { bottom: 20px; right: 20px; width: 60px; height: 60px; }
   }
-
   @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 </style>
 
@@ -279,8 +263,6 @@ order: 1
 
   <section>
     <h2><span style="color:var(--neon-cyan)">02.</span> THE ARSENAL</h2>
-    <p>When the math gets too abstract, I make the GPU do the work.</p>
-
     <div class="holo-card">
       <p style="font-family: 'Orbitron'; color: #666; font-size: 0.8rem; margin-bottom: 5px;">// LOAD MODULE: MACHINE_LEARNING</p>
       <div class="tech-wrapper">
@@ -291,8 +273,8 @@ order: 1
         <div class="tech-node">ANNs</div>
         <div class="tech-node">tinygp</div>
       </div>
-
-      <div style="height: 20px;"></div> <p style="font-family: 'Orbitron'; color: #666; font-size: 0.8rem; margin-bottom: 5px;">// LOAD MODULE: COSMOLOGY_SIMS</p>
+      <div style="height: 20px;"></div>
+      <p style="font-family: 'Orbitron'; color: #666; font-size: 0.8rem; margin-bottom: 5px;">// LOAD MODULE: COSMOLOGY_SIMS</p>
       <div class="tech-wrapper">
         <div class="tech-node">CLASS</div>
         <div class="tech-node">MontePython</div>
@@ -309,9 +291,6 @@ order: 1
       <p style="color: #ff9f43; font-size: 1.1rem; margin-bottom: 20px;">
         <strong>System Warning:</strong> Prolonged exposure to Friedmann equations may cause hallucinations.
       </p>
-      <p style="color: #ccc;">
-        To prevent overheating, I switch to <strong>Comedy Protocol</strong>. Inspired by <strong>Charlie Chaplin</strong> and <strong>Mr. Bean</strong>, I navigate the chaos of life with maximum awkwardness.
-      </p>
       <div style="margin-top: 20px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
         <span style="border: 1px solid #ff9f43; padding: 5px 15px; color: #ff9f43;">🏏 CRICKET</span>
         <span style="border: 1px solid #ff9f43; padding: 5px 15px; color: #ff9f43;">🎬 CINEMA</span>
@@ -321,11 +300,25 @@ order: 1
   </section>
 
   <div style="text-align: center; margin: 80px 0;">
-    <a href="mailto:mazaharul.rs@presiuniv.ac.in" class="btn-main">
-      INITIATE UPLINK (EMAIL)
-    </a>
+    <p style="font-family: 'Orbitron'; margin-bottom: 20px;">// SYSTEM NAVIGATION //</p>
+    
+    <div class="btn-container">
+      <a href="/publications/" class="btn-main">
+        ACCESS PUBLICATIONS
+      </a>
+      <a href="/gallery/" class="btn-main btn-blue">
+        VISUAL DATA (GALLERY)
+      </a>
+    </div>
+
     <br><br>
     <p style="font-size: 0.8rem; color: #555;">// END OF TRANSMISSION //</p>
   </div>
+
+  <a href="mailto:mazaharul.rs@presiuniv.ac.in" class="email-orb" title="Initiate Contact">
+    <svg viewBox="0 0 24 24">
+      <path d="M20,4H4C2.9,4,2,4.9,2,6v12c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V6C22,4.9,21.1,4,20,4z M20,8l-8,5L4,8V6l8,5l8-5V8z"/>
+    </svg>
+  </a>
 
 </div>
